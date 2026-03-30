@@ -112,6 +112,7 @@
       justify-content: center;
       padding: 8rem 2.5rem 5rem;
       max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-wordmark {
@@ -181,17 +182,17 @@
 
     /* ── DIVIDER ── */
     .divider {
-      width: 100%;
       height: 1px;
       background: var(--grey-300);
-      margin: 0 2.5rem;
-      max-width: calc(100% - 5rem);
+      max-width: calc(900px - 5rem);
+      margin: 0 auto;
     }
 
     /* ── WHAT WE DO (mini section) ── */
     .what {
       padding: 5rem 2.5rem;
       max-width: 900px;
+      margin: 0 auto;
     }
 
     .what-grid {
@@ -222,6 +223,8 @@
     /* ── CONTACT ── */
     #contact {
       padding: 6rem 2.5rem 8rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .contact-inner {
@@ -276,6 +279,11 @@
     footer {
       border-top: 1px solid var(--grey-300);
       padding: 1.5rem 2.5rem;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -311,6 +319,9 @@
 
       footer {
         padding: 1.25rem;
+      }
+
+      .footer-inner {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
@@ -371,4 +382,29 @@
       <span class="section-label">Let's talk</span>
       <h2>Ready to clear some noise?</h2>
       <p>Tell me a little about your business and what's eating your time. No commitment — just a conversation.</p>
-      <a class="contact-email" href="mailto:thomas
+      <a class="contact-email" href="mailto:thomas@clrtxt.com">
+        thomas@clrtxt.com
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 clrtxt</p>
+      <a href="mailto:thomas@clrtxt.com">thomas@clrtxt.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
