@@ -7,7 +7,7 @@
   <meta name="description" content="clrtxt helps small businesses and solo operators build AI-powered workflows — no tech background required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -61,15 +61,22 @@
     }
 
     .wordmark {
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: 'Space Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       color: var(--grey-900);
       text-decoration: none;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
 
     .wordmark span {
       color: var(--orange);
+    }
+
+    nav.scrolled .wordmark {
+      opacity: 1;
     }
 
     nav a.nav-link {
@@ -92,6 +99,20 @@
       justify-content: center;
       padding: 8rem 2.5rem 5rem;
       max-width: 900px;
+    }
+
+    .hero-wordmark {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--grey-900);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-wordmark span {
+      color: var(--orange);
     }
 
     .hero-label {
@@ -298,6 +319,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-wordmark">clr<span>txt</span></div>
     <span class="hero-label">AI consulting</span>
     <h1>AI that works.<br /><em>Explained without<br />the alphabet soup.</em></h1>
     <p>clrtxt helps small businesses and independent operators put AI to work — building workflows, automations, and tools that save time and make you more capable. No PhD required.</p>
