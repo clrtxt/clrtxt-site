@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>clrtxt — AI without the alphabet soup</title>
+  <meta name="description" content="clrtxt helps small businesses and solo operators build AI-powered workflows — no tech background required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange:       #C4622D;
+      --orange-dark:  #A5511F;
+      --orange-faint: #F5EAE2;
+      --grey-900:     #1A1A18;
+      --grey-600:     #6B6866;
+      --grey-300:     #D6D3CE;
+      --grey-100:     #F0EDE8;
+      --bg:           #F8F6F3;
+      --white:        #FFFFFF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--grey-900);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    nav.scrolled {
+      border-color: var(--grey-300);
+    }
+
+    .wordmark {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--grey-900);
+      text-decoration: none;
+    }
+
+    .wordmark span {
+      color: var(--orange);
+    }
+
+    nav a.nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--grey-600);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    nav a.nav-link:hover {
+      color: var(--orange);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2.5rem 5rem;
+      max-width: 900px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--grey-900);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: var(--grey-600);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 2.75rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--grey-300);
+      margin: 0 2.5rem;
+      max-width: calc(100% - 5rem);
+    }
+
+    /* ── WHAT WE DO (mini section) ── */
+    .what {
+      padding: 5rem 2.5rem;
+      max-width: 900px;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .what-item {
+      border-top: 2px solid var(--orange);
+      padding-top: 1.25rem;
+    }
+
+    .what-item h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--grey-900);
+    }
+
+    .what-item p {
+      font-size: 0.9rem;
+      color: var(--grey-600);
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 6rem 2.5rem 8rem;
+    }
+
+    .contact-inner {
+      max-width: 560px;
+    }
+
+    .contact-inner .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: var(--grey-900);
+    }
+
+    .contact-inner p {
+      font-size: 1rem;
+      color: var(--grey-600);
+      margin-bottom: 2.25rem;
+      line-height: 1.7;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--orange);
+      text-decoration: none;
+      border-bottom: 1px solid var(--orange-faint);
+      padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .contact-email:hover {
+      color: var(--orange-dark);
+      border-color: var(--orange-dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--grey-300);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer p {
+      font-size: 0.82rem;
+      color: var(--grey-600);
+    }
+
+    footer a {
+      font-size: 0.82rem;
+      color: var(--grey-600);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--orange);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav {
+        padding: 1rem 1.25rem;
+      }
+
+      .hero,
+      .what,
+      #contact {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      footer {
+        padding: 1.25rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .divider {
+        margin: 0 1.25rem;
+        max-width: calc(100% - 2.5rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="wordmark" href="/">clr<span>txt</span></a>
+    <a class="nav-link" href="#contact">Get in touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-label">AI consulting</span>
+    <h1>AI that works.<br /><em>Explained without<br />the alphabet soup.</em></h1>
+    <p>clrtxt helps small businesses and independent operators put AI to work — building workflows, automations, and tools that save time and make you more capable. No PhD required.</p>
+    <a class="btn-primary" href="#contact">Let's talk about your business</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT WE DO -->
+  <section class="what">
+    <div class="what-item" style="border-top: none; padding-top: 0; margin-bottom: 0.5rem;">
+      <p style="font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;">What we do</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-item">
+        <h3>AI Workflow Design</h3>
+        <p>We find the repetitive, time-consuming parts of your work and replace them with smart automations you can actually trust.</p>
+      </div>
+      <div class="what-item">
+        <h3>Custom AI Tools</h3>
+        <p>Need something specific? We build lightweight AI-powered tools tailored to your business — not off-the-shelf software stretched to fit.</p>
+      </div>
+      <div class="what-item">
+        <h3>Plain-Language Strategy</h3>
+        <p>Not sure where to start? We'll help you figure out what AI can realistically do for you — and what's just hype.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="section-label">Let's talk</span>
+      <h2>Ready to clear some noise?</h2>
+      <p>Tell me a little about your business and what's eating your time. No commitment — just a conversation.</p>
+      <a class="contact-email" href="mailto:thomas@clrtxt.com">
+        thomas@clrtxt.com
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 clrtxt</p>
+    <a href="mailto:thomas@clrtxt.com">thomas@clrtxt.com</a>
+  </footer>
+
+  <script>
+    // Add scrolled class to nav for subtle border
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
