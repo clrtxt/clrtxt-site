@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**clrtxt** is a static marketing website for an AI consulting business targeting small businesses and solo operators. The entire site is a single self-contained file: `index.html`.
+**clrtxt** is a single-page contact landing site for Thomas Alley at `clrtxt.com`. It is one screen: wordmark, name, email. The page is a single self-contained file, `index.html`, alongside two static assets (`favicon.svg`, `og.png`).
 
 ## Development
 
@@ -22,7 +22,10 @@ To deploy: edit `index.html`, commit, and push to `master`. GitHub Pages redeplo
 
 Everything lives in `index.html`:
 - **Embedded CSS** with CSS custom properties for the design system (orange `#C4622D` brand color, Inter font via Google Fonts)
+- **Full-height flex layout** — `body` is a flex column at `100dvh`, the hero flexes to fill, and the footer is pinned to the bottom
 - **Responsive layout** with a single breakpoint at 640px
-- **Inline JavaScript** — a single scroll listener that toggles a `scrolled` class on the nav for a border-fade effect
+- **No JavaScript.** The page does not scroll; keep it that way unless content is added.
 
-The only external dependency is the Inter font loaded from Google Fonts.
+The only external dependency is the Inter font loaded from Google Fonts (weights 300/400/500/800 — the ones actually used).
+
+`og.png` is generated from an SVG source; if the wordmark or email changes, regenerate it (1200×630) so unfurls stay accurate.

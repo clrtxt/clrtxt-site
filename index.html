@@ -4,22 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>clrtxt — Thomas Alley</title>
-  <meta name="description" content="Thomas Alley." />
+  <meta name="description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
+  <link rel="canonical" href="https://clrtxt.com/" />
+  <meta name="theme-color" content="#F8F6F3" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
 
   <!-- Open Graph / unfurl -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://clrtxt.com/" />
   <meta property="og:title" content="clrtxt — Thomas Alley" />
-  <meta property="og:description" content="Thomas Alley." />
+  <meta property="og:description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
+  <meta property="og:image" content="https://clrtxt.com/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="clrtxt — Thomas Alley — thomas@clrtxt.com" />
 
   <!-- Twitter/X card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="clrtxt — Thomas Alley" />
-  <meta name="twitter:description" content="Thomas Alley." />
+  <meta name="twitter:description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
+  <meta name="twitter:image" content="https://clrtxt.com/og.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -34,13 +45,7 @@
       --grey-900:     #3A3835;
       --grey-600:     #6B6866;
       --grey-300:     #D6D3CE;
-      --grey-100:     #F0EDE8;
       --bg:           #F8F6F3;
-      --white:        #FFFFFF;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -50,78 +55,31 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      background: var(--bg);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    nav.scrolled {
-      border-color: var(--grey-300);
-    }
-
-    .wordmark {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: lowercase;
-      color: var(--grey-900);
-      text-decoration: none;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .wordmark span {
-      color: var(--orange);
-    }
-
-    nav.scrolled .wordmark {
-      opacity: 1;
-    }
-
-    nav a.nav-link {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--grey-600);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    nav a.nav-link:hover {
-      color: var(--orange);
+      flex-direction: column;
+      min-height: 100vh;
+      min-height: 100dvh;
     }
 
     /* ── HERO ── */
     .hero {
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 10rem 2.5rem 8rem;
+      align-items: flex-start;
+      width: 100%;
       max-width: 900px;
       margin: 0 auto;
+      padding: 4rem 2.5rem;
     }
 
     .hero-wordmark {
-      font-family: 'Inter', sans-serif;
       font-size: clamp(3.5rem, 10vw, 7rem);
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: lowercase;
       line-height: 1;
-      color: var(--grey-900);
       margin-bottom: 3rem;
     }
 
@@ -134,13 +92,7 @@
       font-weight: 300;
       line-height: 1.1;
       letter-spacing: -0.03em;
-      color: var(--grey-900);
       margin-bottom: 2rem;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--orange);
     }
 
     .contact-email {
@@ -175,14 +127,13 @@
       justify-content: space-between;
     }
 
-    footer p {
+    footer p,
+    footer a {
       font-size: 0.82rem;
       color: var(--grey-600);
     }
 
     footer a {
-      font-size: 0.82rem;
-      color: var(--grey-600);
       text-decoration: none;
     }
 
@@ -192,13 +143,8 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      nav {
-        padding: 1rem 1.25rem;
-      }
-
       .hero {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding: 3rem 1.25rem;
       }
 
       footer {
@@ -215,14 +161,8 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <a class="wordmark" href="/">clr<span>txt</span></a>
-    <a class="nav-link" href="mailto:thomas@clrtxt.com">Get in touch</a>
-  </nav>
-
   <!-- HERO -->
-  <section class="hero">
+  <main class="hero">
     <div class="hero-wordmark">clr<span>txt</span></div>
     <h1>Thomas Alley</h1>
     <a class="contact-email" href="mailto:thomas@clrtxt.com">
@@ -231,7 +171,7 @@
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -240,13 +180,6 @@
       <a href="mailto:thomas@clrtxt.com">thomas@clrtxt.com</a>
     </div>
   </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-  </script>
 
 </body>
 </html>
