@@ -5,55 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>clrtxt — Thomas Alley</title>
   <meta name="description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
-  <link rel="canonical" href="https://clrtxt.com/" />
-  <meta name="theme-color" content="#F8F6F3" />
-
-  <!-- Icons -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
-
-  <!-- Open Graph / unfurl -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://clrtxt.com/" />
-  <meta property="og:title" content="clrtxt — Thomas Alley" />
-  <meta property="og:description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
-  <meta property="og:image" content="https://clrtxt.com/og.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="clrtxt — Thomas Alley — thomas@clrtxt.com" />
-
-  <!-- Twitter/X card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="clrtxt — Thomas Alley" />
-  <meta name="twitter:description" content="Thomas Alley — get in touch at thomas@clrtxt.com" />
-  <meta name="twitter:image" content="https://clrtxt.com/og.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange:       #C4622D;
-      --orange-dark:  #A5511F;
-      --orange-faint: #F5EAE2;
-      --grey-900:     #3A3835;
-      --grey-600:     #6B6866;
-      --grey-300:     #D6D3CE;
-      --bg:           #F8F6F3;
+      --bg:        #F8F6F3;
+      --fg:        #2E2C29;
+      --muted:     #78746F;
+      --rule:      #DFDAD3;
+      --accent:    #C4622D;
+      --accent-hi: #A5511F;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #171614;
+        --fg:        #E9E4DC;
+        --muted:     #918B83;
+        --rule:      #322F2B;
+        --accent:    #E58A4E;
+        --accent-hi: #F0A472;
+      }
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      /* No webfont: the system mono stack is the typeface. */
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
       background: var(--bg);
-      color: var(--grey-900);
-      font-size: 16px;
-      line-height: 1.6;
+      color: var(--fg);
+      font-size: 15px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
@@ -61,123 +43,129 @@
       min-height: 100dvh;
     }
 
-    /* ── HERO ── */
-    .hero {
+    main {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
       width: 100%;
-      max-width: 900px;
+      max-width: 640px;
       margin: 0 auto;
-      padding: 4rem 2.5rem;
+      padding: 4rem 2rem;
     }
 
-    .hero-wordmark {
-      font-size: clamp(3.5rem, 10vw, 7rem);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: lowercase;
+    /* ── WORDMARK ── */
+    .wordmark {
+      font-size: clamp(2.75rem, 9vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
       line-height: 1;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
-    .hero-wordmark span {
-      color: var(--orange);
+    .wordmark span { color: var(--accent); }
+
+    .cursor {
+      display: inline-block;
+      width: 0.5em;
+      height: 0.85em;
+      margin-left: 0.12em;
+      vertical-align: -0.02em;
+      background: var(--accent);
+      animation: blink 1.15s step-end infinite;
     }
 
-    .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.75rem);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 2rem;
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor { animation: none; opacity: 0.55; }
     }
 
-    .contact-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--orange);
+    /* ── IDENTITY ── */
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+
+    .tagline {
+      color: var(--muted);
+      margin-bottom: 2.75rem;
+      max-width: 46ch;
+      text-wrap: pretty;
+    }
+
+    /* ── KEY/VALUE BLOCK ── */
+    /* The whole conceit: contact details set like the header of a plain
+       text file, label column aligned by the monospace grid. */
+    dl {
+      display: grid;
+      grid-template-columns: 8.5ch 1fr;
+      gap: 0.4rem 1.5rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+    }
+
+    dt {
+      color: var(--muted);
+      font-size: 0.875rem;
+      padding-top: 0.08rem;
+    }
+
+    dd a {
+      color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid var(--orange-faint);
-      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
       transition: color 0.15s, border-color 0.15s;
     }
 
-    .contact-email:hover {
-      color: var(--orange-dark);
-      border-color: var(--orange-dark);
+    dd a:hover,
+    dd a:focus-visible {
+      color: var(--accent-hi);
+      border-color: currentColor;
     }
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--grey-300);
-      padding: 1.5rem 2.5rem;
+      border-top: 1px solid var(--rule);
+      padding: 1.25rem 2rem;
     }
 
     .footer-inner {
-      max-width: 900px;
+      max-width: 640px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
     }
 
-    footer p,
-    footer a {
-      font-size: 0.82rem;
-      color: var(--grey-600);
-    }
-
-    footer a {
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--orange);
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      .hero {
-        padding: 3rem 1.25rem;
-      }
-
-      footer {
-        padding: 1.25rem;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-      }
+      main { padding: 3rem 1.25rem; }
+      footer { padding: 1.25rem; }
+      dl { grid-template-columns: 7.5ch 1fr; gap: 0.4rem 1rem; }
+      .footer-inner { flex-direction: column; gap: 0.35rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <main class="hero">
-    <div class="hero-wordmark">clr<span>txt</span></div>
+  <main>
+    <div class="wordmark">clr<span>txt</span><i class="cursor" aria-hidden="true"></i></div>
+
     <h1>Thomas Alley</h1>
-    <a class="contact-email" href="mailto:thomas@clrtxt.com">
-      thomas@clrtxt.com
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    <dl>
+      <dt>email</dt>
+      <dd><a href="mailto:thomas@clrtxt.com">thomas@clrtxt.com</a></dd>
+    </dl>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <p>© 2026 clrtxt</p>
-      <a href="mailto:thomas@clrtxt.com">thomas@clrtxt.com</a>
+      <span>© 2026 clrtxt</span>
+      <span>cleartext, as advertised</span>
     </div>
   </footer>
 
